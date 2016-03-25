@@ -1,0 +1,133 @@
+//@charset "utf-8";用于解决不支持中文字体
+$blue : #cccccc;
+$side : left;
+$var :100px;
+div{
+	color:$blue;
+}
+.rounded{
+	border-#{$side}-radius: 5px;
+}
+body{
+	margin:(14px/2);
+	top:50px+100px;
+	right:$var*0.1;
+}
+div{
+	h1{
+	color:red;
+	}
+}
+p{
+	border:{
+		color:red;
+	}
+}
+a{
+	&:hover{color:#ffb3ff;}
+}
+.class1{
+	border:1px solid #ddd;
+}
+.class2{
+	@extend .class1;
+	font-size:120%;
+}
+@mixin left($value:10px){
+	float:left;
+	margin-left:$value;
+}
+.class3{
+	@include left;
+}
+.class4{
+	@include left(20px);
+}
+$linkColor: #08c #333 !default;
+a{
+	color:nth($linkColor,1);
+	&:hover{
+	color:nth($linkColor,2);
+	}
+}
+
+$headings:(h1:2em,h2:1.5em,h3:1.2em);
+@each $header,$size in $headings{
+	#{$header}{
+	font-size:$size;
+	}
+}
+.parent-1{
+	color:#f00;
+	.child{
+		width:100px;
+	}
+}
+.parent-2{
+	color:#f00;
+	@at-root .child{
+		width:200px;
+	}
+}
+.parent-3{
+	background:f00;
+	@at-root{
+		.child1{
+			width:300px;
+		}
+		.child2{
+			width:400px;
+		}
+	}
+}
+
+//跳出父级元素嵌套
+@media print {
+    .parent1{
+      color:#f00;
+      @at-root .child1 {
+        width:200px;
+      }
+    }
+}
+
+//跳出media嵌套，父级有效
+@media print {
+  .parent2{
+    color:#f00;
+
+    @at-root (without: media) {
+      .child2 {
+        width:200px;
+      } 
+    }
+  }
+}
+
+//跳出media和父级
+@media print {
+  .parent3{
+    color:#f00;
+
+    @at-root (without: all) {
+      .child3 {
+        width:200px;
+      } 
+    }
+  }
+}
+.child{
+    @at-root .parent &{
+        color:#f00;
+    }
+}
+
+
+/*sass --style compressed input.scss input.css
+提供四个编译风格  nested：嵌套缩进的css代码，默认
+				    expanded：没有锁紧的、扩展的css代码
+					compact：简洁格式的css代码
+					compressed：压缩后的css代码
+监听
+监听文件 sass --watch input.scss:output.css
+监听目录 sass --watch D:\WWW\test-sass*/

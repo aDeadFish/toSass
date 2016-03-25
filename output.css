@@ -1,0 +1,94 @@
+@charset "UTF-8";
+div {
+  color: #cccccc; }
+
+.rounded {
+  border-left-radius: 5px; }
+
+body {
+  margin: 7px;
+  top: 150px;
+  right: 10px; }
+
+div h1 {
+  color: red; }
+
+p {
+  border-color: red; }
+
+a:hover {
+  color: #ffb3ff; }
+
+.class1, .class2 {
+  border: 1px solid #ddd; }
+
+.class2 {
+  font-size: 120%; }
+
+.class3 {
+  float: left;
+  margin-left: 10px; }
+
+.class4 {
+  float: left;
+  margin-left: 20px; }
+
+a {
+  color: #08c; }
+  a:hover {
+    color: #333; }
+
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+.parent-1 {
+  color: #f00; }
+  .parent-1 .child {
+    width: 100px; }
+
+.parent-2 {
+  color: #f00; }
+  .child {
+    width: 200px; }
+
+.parent-3 {
+  background: f00; }
+  .child1 {
+    width: 300px; }
+
+  .child2 {
+    width: 400px; }
+
+@media print {
+  .parent1 {
+    color: #f00; }
+    .child1 {
+      width: 200px; } }
+@media print {
+  .parent2 {
+    color: #f00; } }
+  .parent2 .child2 {
+    width: 200px; }
+
+@media print {
+  .parent3 {
+    color: #f00; } }
+  .child3 {
+    width: 200px; }
+
+/*sass --style compressed input.scss input.css
+提供四个编译风格  nested：嵌套缩进的css代码，默认
+				    expanded：没有锁紧的、扩展的css代码
+					compact：简洁格式的css代码
+					compressed：压缩后的css代码
+监听
+监听文件 sass --watch input.scss:output.css
+监听目录 sass --watch D:\WWW\test-sass*/
+
+/*# sourceMappingURL=output.css.map */
